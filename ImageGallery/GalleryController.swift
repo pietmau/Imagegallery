@@ -6,13 +6,19 @@
 import Foundation
 import UIKit
 
-class GalleryController: UICollectionViewController, UIDropInteractionDelegate {
+class GalleryController: UICollectionViewController, UICollectionViewDropDelegate {
+    private var images: [URL] = []
 
-    public func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        let path = coordinator.destinationIndexPath ?? IndexPath(item: 0, section: 0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
         return session.canLoadObjects(ofClass: URL.self) && session.canLoadObjects(ofClass: UIImage.self)
     }
 
-    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
-        return UIDropProposal(operation: .copy)
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+        return UICollectionViewDropProposal(operation: .copy, intent: .insertAtDestinationIndexPath)
     }
+
 }

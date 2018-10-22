@@ -24,7 +24,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rca-9d-CPi">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="rca-9d-CPi">
                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -41,6 +41,35 @@
                                     <constraint firstItem="RXT-cS-rlm" firstAttribute="top" secondItem="rca-9d-CPi" secondAttribute="top" id="RVR-vu-0KY"/>
                                     <constraint firstAttribute="bottom" secondItem="RXT-cS-rlm" secondAttribute="bottom" id="XPz-bk-hQY"/>
                                     <constraint firstItem="RXT-cS-rlm" firstAttribute="leading" secondItem="rca-9d-CPi" secondAttribute="leading" id="pjp-ha-yjl"/>
+                                </constraints>
+                                <size key="customSize" width="120" height="120"/>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DropPlaceholderCell" id="DJ7-lm-1lP">
+                                <rect key="frame" x="255" y="0.0" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2mb-Ni-z94">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        </imageView>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="nIo-Ck-weP">
+                                            <rect key="frame" x="40" y="40" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="FPy-bM-hCS"/>
+                                                <constraint firstAttribute="width" constant="40" id="vyC-Et-JLD"/>
+                                            </constraints>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="nIo-Ck-weP" firstAttribute="centerY" secondItem="DJ7-lm-1lP" secondAttribute="centerY" id="5Im-zk-oTF"/>
+                                    <constraint firstItem="2mb-Ni-z94" firstAttribute="top" secondItem="DJ7-lm-1lP" secondAttribute="top" id="6sc-nV-hKd"/>
+                                    <constraint firstAttribute="bottom" secondItem="2mb-Ni-z94" secondAttribute="bottom" id="X8j-iB-AD8"/>
+                                    <constraint firstAttribute="trailing" secondItem="2mb-Ni-z94" secondAttribute="trailing" id="ar6-QB-d2u"/>
+                                    <constraint firstItem="nIo-Ck-weP" firstAttribute="centerX" secondItem="DJ7-lm-1lP" secondAttribute="centerX" id="qXe-nv-xdP"/>
+                                    <constraint firstItem="2mb-Ni-z94" firstAttribute="leading" secondItem="DJ7-lm-1lP" secondAttribute="leading" id="rM0-JH-Q1B"/>
                                 </constraints>
                                 <size key="customSize" width="120" height="120"/>
                             </collectionViewCell>

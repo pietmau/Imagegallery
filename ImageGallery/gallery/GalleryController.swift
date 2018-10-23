@@ -21,28 +21,36 @@ class GalleryController: UICollectionViewController, UICollectionViewDropDelegat
 
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         let destination = coordinator.destinationIndexPath ?? IndexPath(item: 0, section: 0)
-        onNonLocalDrag(coordinator, destination)
+        for item in coordinator.items {
+            if let sourceIndexPath = item.sourceIndexPath {
+                onLocalDrop(destination: destination, coordinator: coordinator, item: item)
+            } else {
+                onNonLocalDrop(destination: destination, coordinator: coordinator, item: item)
+            }
+        }
     }
 
-    private func onNonLocalDrag(_ coordinator: UICollectionViewDropCoordinator, _ destination: IndexPath) {
-        for item in coordinator.items {
-            let placeHolder = UICollectionViewDropPlaceholder(insertionIndexPath: destination, reuseIdentifier: "DropPlaceholderCell")
-            let placeholderContext = coordinator.drop(item.dragItem, to: placeHolder)
-            var url: URL? = nil
-            var image: UIImage? = nil
-            item.dragItem.itemProvider.loadObject(ofClass: URL.self) { (provider, error) in
-                url = provider as? URL
-                self.onObjectLoaded(url, image, placeholderContext)
-                if (url == nil) {
-                    self.deletePlaceHolder(placeholderContext: placeholderContext)
-                }
+    private func onLocalDrop(destination: IndexPath, coordinator: UICollectionViewDropCoordinator, item: UICollectionViewDropItem) {
+
+    }
+
+    private func onNonLocalDrop(destination: IndexPath, coordinator: UICollectionViewDropCoordinator, item: UICollectionViewDropItem) {
+        let placeHolder = UICollectionViewDropPlaceholder(insertionIndexPath: destination, reuseIdentifier: "DropPlaceholderCell")
+        let placeholderContext = coordinator.drop(item.dragItem, to: placeHolder)
+        var url: URL? = nil
+        var image: UIImage? = nil
+        item.dragItem.itemProvider.loadObject(ofClass: URL.self) { (provider, error) in
+            url = provider as? URL
+            self.onObjectLoaded(url, image, placeholderContext)
+            if (url == nil) {
+                self.deletePlaceHolder(placeholderContext: placeholderContext)
             }
-            item.dragItem.itemProvider.loadObject(ofClass: UIImage.self) { (provider, error) in
-                image = provider as? UIImage
-                self.onObjectLoaded(url, image, placeholderContext)
-                if (image == nil) {
-                    self.deletePlaceHolder(placeholderContext: placeholderContext)
-                }
+        }
+        item.dragItem.itemProvider.loadObject(ofClass: UIImage.self) { (provider, error) in
+            image = provider as? UIImage
+            self.onObjectLoaded(url, image, placeholderContext)
+            if (image == nil) {
+                self.deletePlaceHolder(placeholderContext: placeholderContext)
             }
         }
     }

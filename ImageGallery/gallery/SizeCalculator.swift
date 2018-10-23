@@ -16,13 +16,19 @@ class SizeCalculator {
     }
 
     func calculateRatio(_ image: UIKit.UIImage) -> Float {
-        return Float(image.size.width / image.size.height)
+        return Float(image.size.height / image.size.width)
     }
 
 
-    func getSize(_ ratio: Float, _ orientation: UIDeviceOrientation, _ bounds: CGRect) -> CGSize {
-        let width = bounds.width / cols
+    func getSize(_ ratio: Float, _ orientation: UIDeviceOrientation, _ bounds: CGRect?) -> CGSize {
+        if (bounds == nil) {
+            return CGSize(width: 0, height: 0)
+        }
+        print("screen width \(bounds!.width) ")
+        let width = floor((bounds!.width / cols))
+        print(" width \(width) ")
         let height = width * CGFloat(ratio)
+        print(" height \(height) ")
         return CGSize(width: width, height: height)
     }
 }

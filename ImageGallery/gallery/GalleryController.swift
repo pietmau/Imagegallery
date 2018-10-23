@@ -6,15 +6,17 @@
 import Foundation
 import UIKit
 
-class GalleryController: UICollectionViewController, UICollectionViewDropDelegate, UICollectionViewDragDelegate {
+class GalleryController: UICollectionViewController, UICollectionViewDropDelegate, UICollectionViewDragDelegate,
+        UICollectionViewDelegateFlowLayout {
     private var urls: [(URL, Float)] = []
-    private let sizeCalculator = SizeCalculator(5, 6)
+    private let sizeCalculator = SizeCalculator(5, 5)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.dragDelegate = self
-        collectionView?.dropDelegate = self
-        collectionView?.dragInteractionEnabled = true
+        collectionView!.dragDelegate = self
+        collectionView!.dropDelegate = self
+        collectionView!.dragInteractionEnabled = true
+        collectionView!.delegate = self
     }
 
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
@@ -32,16 +34,22 @@ class GalleryController: UICollectionViewController, UICollectionViewDropDelegat
                 url = provider as? URL
                 self.onObjectLoaded(url, image, placeholderContext)
                 if (url == nil) {
-                    placeholderContext.deletePlaceholder()
+                    self.deletePlaceHolder(placeholderContext: placeholderContext)
                 }
             }
             item.dragItem.itemProvider.loadObject(ofClass: UIImage.self) { (provider, error) in
                 image = provider as? UIImage
                 self.onObjectLoaded(url, image, placeholderContext)
                 if (image == nil) {
-                    placeholderContext.deletePlaceholder()
+                    self.deletePlaceHolder(placeholderContext: placeholderContext)
                 }
             }
+        }
+    }
+
+    private func deletePlaceHolder(placeholderContext: UICollectionViewDropPlaceholderContext) {
+        DispatchQueue.main.async {
+            placeholderContext.deletePlaceholder()
         }
     }
 
@@ -49,14 +57,11 @@ class GalleryController: UICollectionViewController, UICollectionViewDropDelegat
         if (url == nil || image == nil) {
             return
         }
-        context.commitInsertion(dataSourceUpdates: { insertionIndexPath in
-            self.urls.insert((url!.imageURL, sizeCalculator.calculateRatio(image!)), at: insertionIndexPath.item)
-        })
-    }
-
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let ratio: Float = urls[indexPath.item].1
-        return sizeCalculator.getSize(ratio, UIDevice.current.orientation, UIScreen.main.bounds)
+        DispatchQueue.main.async {
+            context.commitInsertion(dataSourceUpdates: { insertionIndexPath in
+                self.urls.insert((url!.imageURL, self.sizeCalculator.calculateRatio(image!)), at: insertionIndexPath.item)
+            })
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
@@ -75,8 +80,7 @@ class GalleryController: UICollectionViewController, UICollectionViewDropDelegat
         return 1
     }
 
-    override func collectionView(_ collectionView: UICollectionView,
-                                 numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return urls.count
     }
 
@@ -84,5 +88,24 @@ class GalleryController: UICollectionViewController, UICollectionViewDropDelegat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
         cell.loadImage(urls[indexPath.item].0)
         return cell
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let ratio: Float = urls[indexPath.item].1
+        let cgSize = sizeCalculator.getSize(ratio, UIDevice.current.orientation, self.view.window?.frame)
+        return cgSize
     }
 }

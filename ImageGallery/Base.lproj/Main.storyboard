@@ -16,7 +16,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="w0d-G5-7Xf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.18310615274989717" green="1" blue="0.14709521883398724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ta1-4E-Gnf">
                             <size key="itemSize" width="116" height="112"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -31,6 +31,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RXT-cS-rlm">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <color key="backgroundColor" red="1" green="0.99310429815130263" blue="0.20788210596842227" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                        </imageView>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="oly-m5-F04">
                                             <rect key="frame" x="40" y="40" width="40" height="40"/>
                                             <constraints>
@@ -38,11 +43,9 @@
                                                 <constraint firstAttribute="width" constant="40" id="zHn-Xs-t1h"/>
                                             </constraints>
                                         </activityIndicatorView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RXT-cS-rlm">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                        </imageView>
                                     </subviews>
                                 </view>
+                                <color key="backgroundColor" red="0.1831061527" green="1" blue="0.14709521880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="oly-m5-F04" firstAttribute="centerX" secondItem="rca-9d-CPi" secondAttribute="centerX" id="EQA-Mc-alV"/>
                                     <constraint firstAttribute="trailing" secondItem="RXT-cS-rlm" secondAttribute="trailing" id="Gyn-RQ-LYw"/>
@@ -51,6 +54,7 @@
                                     <constraint firstItem="oly-m5-F04" firstAttribute="centerY" secondItem="rca-9d-CPi" secondAttribute="centerY" id="Yd5-Wg-xAZ"/>
                                     <constraint firstItem="RXT-cS-rlm" firstAttribute="leading" secondItem="rca-9d-CPi" secondAttribute="leading" id="pjp-ha-yjl"/>
                                 </constraints>
+                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                 <size key="customSize" width="120" height="120"/>
                                 <connections>
                                     <outlet property="image" destination="RXT-cS-rlm" id="lXr-tC-vcH"/>
@@ -64,15 +68,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="nIo-Ck-weP">
-                                            <rect key="frame" x="40" y="40" width="40" height="40"/>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="nIo-Ck-weP">
+                                            <rect key="frame" x="10.5" y="10.5" width="100" height="100"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="FPy-bM-hCS"/>
-                                                <constraint firstAttribute="width" constant="40" id="vyC-Et-JLD"/>
+                                                <constraint firstAttribute="width" constant="100" id="BAy-vg-SiF"/>
+                                                <constraint firstAttribute="height" constant="100" id="hsD-W8-tPO"/>
                                             </constraints>
+                                            <color key="color" red="1" green="0.24812236327153925" blue="0.1782938021286008" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </activityIndicatorView>
                                     </subviews>
                                 </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="nIo-Ck-weP" firstAttribute="centerY" secondItem="DJ7-lm-1lP" secondAttribute="centerY" id="5Im-zk-oTF"/>
                                     <constraint firstItem="nIo-Ck-weP" firstAttribute="centerX" secondItem="DJ7-lm-1lP" secondAttribute="centerX" id="qXe-nv-xdP"/>

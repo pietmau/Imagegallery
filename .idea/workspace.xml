@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="627b0648-e94e-41c5-91f8-7925a2197f2f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageGallery/GalleryController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ImageGallery/GalleryController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageGallery/SizeCalculator.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ImageGallery/SizeCalculator.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageGallery.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ImageGallery.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageGallery/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/ImageGallery/Base.lproj/Main.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageGallery/GalleryController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ImageGallery/gallery/GalleryController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageGallery/SizeCalculator.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ImageGallery/gallery/SizeCalculator.swift" afterDir="false" />
     </list>
     <ignored path="$USER_HOME$/Library/Developer/Xcode/DerivedData/ImageGallery-cncjaxcswtwexncelsomsslcsfrf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,22 +26,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="swift" value="644" />
+          <entry key="swift" value="793" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Swift" value="644" />
+          <entry key="Swift" value="793" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="swift" value="8" />
+          <entry key="swift" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Swift" value="8" />
+          <entry key="Swift" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.cidr.testingFrameworks.usages" />
@@ -50,23 +52,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ImageGallery/GalleryController.swift">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
-              <folding>
-                <element signature="e#124#141#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ImageGallery/SizeCalculator.swift">
+        <entry file="file://$PROJECT_DIR$/ImageGallery/gallery/GalleryController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+            <state relative-caret-position="533">
+              <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
               <folding>
                 <element signature="e#124#141#0" expanded="true" />
               </folding>
@@ -88,8 +78,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ImageGallery/GalleryController.swift" />
         <option value="$PROJECT_DIR$/ImageGallery/SizeCalculator.swift" />
+        <option value="$PROJECT_DIR$/ImageGallery/GalleryController.swift" />
+        <option value="$PROJECT_DIR$/ImageGallery/gallery/ImageCell.swift" />
+        <option value="$PROJECT_DIR$/ImageGallery/gallery/GalleryController.swift" />
       </list>
     </option>
   </component>
@@ -123,6 +115,12 @@
               <item name="" type="efc3779f:XcodeRootNode" />
               <item name="ImageGallery" type="1d218c8b:XcodeProjectNode" />
               <item name="ImageGallery" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="ImageGallery" type="1d218c8b:XcodeProjectNode" />
+              <item name="ImageGallery" type="fcab9f18:XcodeViewNode" />
+              <item name="gallery" type="fcab9f18:XcodeViewNode" />
             </path>
           </expand>
           <select />
@@ -168,18 +166,18 @@
       <updated>1523974884805</updated>
       <workItem from="1523974887962" duration="5423000" />
       <workItem from="1524665338377" duration="102000" />
-      <workItem from="1540284967969" duration="4570000" />
+      <workItem from="1540284967969" duration="6243000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10095000" />
+    <option name="totallyTimeSpent" value="11768000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="809" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13161659" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22532189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -216,20 +214,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ImageGallery/GalleryController.swift">
+    <entry file="file://$PROJECT_DIR$/ImageGallery/gallery/SizeCalculator.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+        <state relative-caret-position="375">
+          <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
           <folding>
             <element signature="e#124#141#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ImageGallery/SizeCalculator.swift">
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/UIKit.UICollectionViewCell/UIKit.UICollectionViewCell.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+        <state relative-caret-position="217">
+          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ImageGallery/gallery/ImageCell.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <folding>
+            <element signature="e#124#141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Utilities.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1539">
+          <caret line="97" column="37" lean-forward="true" selection-start-line="97" selection-start-column="37" selection-end-line="97" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ImageGallery/gallery/GalleryController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
           <folding>
             <element signature="e#124#141#0" expanded="true" />
           </folding>

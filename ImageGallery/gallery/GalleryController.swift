@@ -8,7 +8,7 @@ import UIKit
 
 class GalleryController: UICollectionViewController, UICollectionViewDropDelegate, UICollectionViewDragDelegate {
     private var urls: [(URL, Float)] = []
-    private let sizeCalculator = SizeCalculator(5,6)
+    private let sizeCalculator = SizeCalculator(5, 6)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +50,13 @@ class GalleryController: UICollectionViewController, UICollectionViewDropDelegat
             return
         }
         context.commitInsertion(dataSourceUpdates: { insertionIndexPath in
-            self.urls.insert((url!, sizeCalculator.calculateRatio(image!)), at: insertionIndexPath.item)
+            self.urls.insert((url!.imageURL, sizeCalculator.calculateRatio(image!)), at: insertionIndexPath.item)
         })
     }
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let ratio: Float = urls[indexPath.item].1
-        let size = sizeCalculator.getSize(ratio, UIDevice.current.orientation, UIScreen.main.bounds)
-        return ratio
+        return sizeCalculator.getSize(ratio, UIDevice.current.orientation, UIScreen.main.bounds)
     }
 
     func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
@@ -82,8 +81,8 @@ class GalleryController: UICollectionViewController, UICollectionViewDropDelegat
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "ImageCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
+        cell.loadImage(urls[indexPath.item].0)
         return cell
     }
 }

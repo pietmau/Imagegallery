@@ -50,7 +50,6 @@
                                                 </activityIndicatorView>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.1831061527" green="1" blue="0.14709521880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="oly-m5-F04" firstAttribute="centerX" secondItem="rca-9d-CPi" secondAttribute="centerX" id="EQA-Mc-alV"/>
                                             <constraint firstAttribute="trailing" secondItem="RXT-cS-rlm" secondAttribute="trailing" id="Gyn-RQ-LYw"/>

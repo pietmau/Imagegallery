@@ -23,11 +23,19 @@ class GalleryDataSource: NSObject, UICollectionViewDataSource {
         return cell
     }
 
+    func get(_ index: Int) -> (URL, Float) {
+        return urls[index]
+    }
+
     func insert(_ url: (URL, Float), index: Int) {
         urls.insert(url, at: index)
     }
 
     func getRatio(_ index: Int) -> Float {
         return urls[index].1
+    }
+
+    func remove(_ index: Int?) {
+        urls.remove(at: index!)
     }
 }

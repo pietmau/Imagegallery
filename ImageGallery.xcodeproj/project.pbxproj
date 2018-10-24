@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		396720960090C1D6E1515597 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396721CC3570F51C21402F59 /* ImageCell.swift */; };
+		39672996DA63710711FCECB6 /* GalleryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672E15D1FB09CC8EDEA29B /* GalleryDataSource.swift */; };
 		39672C79A10C67B692F7E431 /* SizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672B2236E6DA1F6980D247 /* SizeCalculator.swift */; };
 		39672FECAED201B213BC4C1F /* GalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672662EEAF7C579C276DD3 /* GalleryController.swift */; };
 		9C82D50B208639CD00D3A858 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82D50A208639CD00D3A858 /* AppDelegate.swift */; };
@@ -40,6 +41,7 @@
 		396721CC3570F51C21402F59 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		39672662EEAF7C579C276DD3 /* GalleryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryController.swift; sourceTree = "<group>"; };
 		39672B2236E6DA1F6980D247 /* SizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeCalculator.swift; sourceTree = "<group>"; };
+		39672E15D1FB09CC8EDEA29B /* GalleryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryDataSource.swift; sourceTree = "<group>"; };
 		9C82D507208639CD00D3A858 /* ImageGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C82D50A208639CD00D3A858 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C82D50F208639CD00D3A858 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				39672662EEAF7C579C276DD3 /* GalleryController.swift */,
 				39672B2236E6DA1F6980D247 /* SizeCalculator.swift */,
 				396721CC3570F51C21402F59 /* ImageCell.swift */,
+				39672E15D1FB09CC8EDEA29B /* GalleryDataSource.swift */,
 			);
 			path = gallery;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				39672FECAED201B213BC4C1F /* GalleryController.swift in Sources */,
 				39672C79A10C67B692F7E431 /* SizeCalculator.swift in Sources */,
 				396720960090C1D6E1515597 /* ImageCell.swift in Sources */,
+				39672996DA63710711FCECB6 /* GalleryDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

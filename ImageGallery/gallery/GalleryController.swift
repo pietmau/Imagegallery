@@ -1,22 +1,22 @@
-//
-// Created by Maurizio Pietrantuono on 17/04/2018.
-// Copyright (c) 2018 Maurizio Pietrantuono. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
-class GalleryController: UICollectionViewController, UICollectionViewDropDelegate, UICollectionViewDragDelegate,
-        UICollectionViewDelegateFlowLayout {
-    private var urls: [(URL, Float)] = []
+class GalleryController: UIViewController, UICollectionViewDropDelegate,
+        UICollectionViewDragDelegate, UICollectionViewDelegateFlowLayout {
     private let sizeCalculator = SizeCalculator(5, 5)
+    private let source: GalleryDataSource = GalleryDataSource()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        collectionView!.dragDelegate = self
-        collectionView!.dropDelegate = self
-        collectionView!.dragInteractionEnabled = true
-        collectionView!.delegate = self
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            collectionView.dragDelegate = self
+            collectionView.dropDelegate = self
+            collectionView.dragInteractionEnabled = true
+            collectionView.delegate = self
+            collectionView.dataSource = source
+            let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+            layout.minimumLineSpacing = 0
+            layout.minimumInteritemSpacing = 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
@@ -67,7 +67,7 @@ class GalleryController: UICollectionViewController, UICollectionViewDropDelegat
         }
         DispatchQueue.main.async {
             context.commitInsertion(dataSourceUpdates: { insertionIndexPath in
-                self.urls.insert((url!.imageURL, self.sizeCalculator.calculateRatio(image!)), at: insertionIndexPath.item)
+                self.source.insert((url!.imageURL, self.sizeCalculator.calculateRatio(image!)), index: insertionIndexPath.item)
             })
         }
     }
@@ -84,35 +84,12 @@ class GalleryController: UICollectionViewController, UICollectionViewDropDelegat
         return []
     }
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return urls.count
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
-        cell.loadImage(urls[indexPath.item].0)
-        return cell
-    }
-
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-
-
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let ratio: Float = urls[indexPath.item].1
+        let ratio: Float = source.getRatio(indexPath.item)
         let cgSize = sizeCalculator.getSize(ratio, UIDevice.current.orientation, self.view.window?.frame)
         return cgSize
     }

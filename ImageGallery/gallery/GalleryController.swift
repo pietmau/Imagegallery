@@ -6,6 +6,7 @@ class GalleryController: UIViewController, UICollectionViewDelegateFlowLayout {
     private let sizeCalculator = SizeCalculator(5, 5)
     private var dropDelegate: CollectionViewDropDelegate? = nil
     private var dragDelegate: CollectionViewDragDelegate? = nil
+    private var recognizer: UIPinchGestureRecognizer? = nil
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -19,7 +20,15 @@ class GalleryController: UIViewController, UICollectionViewDelegateFlowLayout {
             let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
             layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0
+            recognizer = UIPinchGestureRecognizer(target: self, action: #selector(onPinch(recognizer:)))
+            collectionView.addGestureRecognizer(recognizer!)
         }
+    }
+
+    @objc
+    private func onPinch(recognizer: UIPinchGestureRecognizer) {
+        sizeCalculator.onPinch(recognizer)
+        collectionView.reloadData()
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

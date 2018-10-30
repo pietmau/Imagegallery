@@ -1,26 +1,39 @@
-//
-// Created by Maurizio Pietrantuono on 23/10/2018.
-// Copyright (c) 2018 Maurizio Pietrantuono. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
 class ImageCell: UICollectionViewCell {
-    @IBOutlet weak var progressIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var progressIndicator: UIActivityIndicatorView!//TODO remove
     @IBOutlet weak var image: UIImageView!
     private var url: URL? = nil
 
     func loadImage(_ url: URL) {
+        if (url != self.url) {
+            setNil()
+        }
         self.url = url
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            let urlContents = try? Data(contentsOf: url)
+        let closure: (Data?, URLResponse?, Error?) -> () = { (data, response, error) in
+            if (error != nil) {
+                self.setNil()
+                return
+            }
+            if (response?.url != self.url) {
+                self.setNil()
+                return
+            }
             DispatchQueue.main.async {
-                if let imageData = urlContents, url == self?.url {
-                    self?.image.image = UIImage(data: imageData)
+                if let data = data {
+                    if let downloadedImage = UIImage(data: data) {
+                        self.image.image = downloadedImage
+                    }
                 }
             }
         }
+        URLSession.shared.dataTask(with: url, completionHandler: closure).resume()
+    }
 
+    private func setNil() {
+        DispatchQueue.main.async {
+            self.image.image = nil
+        }
     }
 }

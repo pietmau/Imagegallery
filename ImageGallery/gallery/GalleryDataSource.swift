@@ -1,8 +1,3 @@
-//
-// Created by Maurizio Pietrantuono on 24/10/2018.
-// Copyright (c) 2018 Maurizio Pietrantuono. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -38,4 +33,5 @@ class GalleryDataSource: NSObject, UICollectionViewDataSource {
     func remove(_ index: Int?) {
         urls.remove(at: index!)
     }
+
 }

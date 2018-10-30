@@ -7,10 +7,12 @@ import Foundation
 import UIKit
 
 class SizeCalculator {
-    private var rows: CGFloat
-    private var cols: CGFloat
+    private let rows: CGFloat
+    private let cols: CGFloat
+    private var initialRatio: CGFloat = 1
+    private var ratio: CGFloat = 1
 
-    init(_ rows: Int, _ cols: Int) {
+    init(_ rows: Int = 5, _ cols: Int = 5) {
         self.rows = CGFloat(rows)
         self.cols = CGFloat(cols)
     }
@@ -20,15 +22,25 @@ class SizeCalculator {
     }
 
 
-    func getSize(_ ratio: Float, _ orientation: UIDeviceOrientation, _ bounds: CGRect?) -> CGSize {
+    func getSize(_ imageRatio: Float, _ orientation: UIDeviceOrientation, _ bounds: CGRect?) -> CGSize {
         if (bounds == nil) {
             return CGSize(width: 0, height: 0)
         }
-        print("screen width \(bounds!.width) ")
-        let width = floor((bounds!.width / cols))
-        print(" width \(width) ")
-        let height = width * CGFloat(ratio)
-        print(" height \(height) ")
+        let width = floor((bounds!.width / cols)) * ratio
+        let height = width * CGFloat(imageRatio) * ratio
         return CGSize(width: width, height: height)
+    }
+
+    func onPinch(_ recognizer: UIPinchGestureRecognizer) {
+        let scale: CGFloat = CGFloat(recognizer.scale)
+        if (recognizer.state == UIGestureRecognizerState.ended) {
+            ratio = initialRatio * scale
+            initialRatio = initialRatio * scale
+            return
+        }
+        if (recognizer.state == UIGestureRecognizerState.changed) {
+            ratio = initialRatio * scale
+            return
+        }
     }
 }

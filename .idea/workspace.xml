@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="627b0648-e94e-41c5-91f8-7925a2197f2f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageGallery/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/ImageGallery/Base.lproj/Main.storyboard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageGallery/gallery/GalleryController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ImageGallery/gallery/GalleryController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageGallery/gallery/GalleryDataSource.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ImageGallery/gallery/GalleryDataSource.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImageGallery/gallery/New Group/CollectionViewDragDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ImageGallery/gallery/New Group/CollectionViewDragDelegate.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ImageGallery/gallery/table/GalleryTableModel.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ImageGallery/gallery/table/GalleryTableModel.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ImageGallery/gallery/table/GalleryTableViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ImageGallery/gallery/table/GalleryTableViewController.swift" afterDir="false" />
     </list>
@@ -28,25 +23,25 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="swift" value="4592" />
+          <entry key="swift" value="5661" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Swift" value="4592" />
+          <entry key="Swift" value="5661" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="h" value="1" />
           <entry key="m" value="1" />
-          <entry key="swift" value="162" />
+          <entry key="swift" value="192" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="ObjectiveC" value="2" />
-          <entry key="Swift" value="162" />
+          <entry key="Swift" value="192" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.cidr.testingFrameworks.usages" />
@@ -55,13 +50,16 @@
       <usages-collector id="statistics.appcode.build" />
     </session>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="ImageGallery" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ImageGallery/gallery/table/GalleryTableViewController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="82" column="24" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+            <state relative-caret-position="212">
+              <caret line="59" column="38" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -69,8 +67,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ImageGallery/gallery/table/GalleryTableModel.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+            <state relative-caret-position="457">
+              <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -79,8 +77,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>init</find>
       <find>size</find>
+      <find>init</find>
+      <find>heade</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -158,6 +157,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="OBJC.PRESERVED_TARGET_SELECTION" value="ImageGallery" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/maurizio.pietrantuon/Documents/git/ImageGallery/ImageGallery/gallery/table/GalleryTableViewController.swift" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunDashboard">
@@ -199,7 +199,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61236000" />
+    <option name="totallyTimeSpent" value="68337000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -214,10 +214,10 @@
     <frame x="11" y="23" width="1421" height="803" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4979757" visible="true" weight="0.21029732" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4985465" visible="true" weight="0.1907179" />
       <window_info id="Structure" order="1" sideWeight="0.5020243" side_tool="true" weight="0.19652778" />
       <window_info id="Designer" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Favorites" order="3" sideWeight="0.50145346" side_tool="true" weight="0.1907179" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32848838" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -230,7 +230,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.3286908" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="right" x="0" y="0" width="305" height="603" id="Documentation" side_tool="true" weight="0.32994923" />
+      <window_info anchor="right" x="0" y="0" width="305" height="603" id="Documentation" side_tool="true" visible="true" weight="0.0" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -254,8 +254,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ImageGallery/gallery/table/GalleryTableViewController.swift</url>
-          <line>16</line>
+          <line>19</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/ImageGallery/gallery/table/GalleryTableViewController.swift</url>
+          <line>11</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -279,13 +284,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="498">
           <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/Foundation/Foundation.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="7532" column="33" selection-start-line="7532" selection-start-column="33" selection-end-line="7532" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -375,13 +373,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/UIKit.UIView/UIKit.UIView.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="228" column="11" selection-start-line="228" selection-start-column="11" selection-end-line="228" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/UIKit.UIImageView/UIKit.UIImageView.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -411,13 +402,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ImageGallery/gallery/table/GalleryTableModel.h">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/ObjectiveC.NSObject/ObjectiveC.NSObject.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="53" column="11" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/Utilities.swift">
       <provider selected="true" editor-type-id="text-editor">
@@ -474,17 +458,80 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/Swift/Math.Integers.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="115" column="23" selection-start-line="115" selection-start-column="23" selection-end-line="115" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/Foundation/Foundation.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8489">
+          <caret line="4994" column="15" selection-start-line="4994" selection-start-column="11" selection-end-line="4994" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/UIKit.UIView/UIKit.UIView.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="284" column="13" selection-start-line="284" selection-start-column="13" selection-end-line="284" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/UIKit.UITableViewCell/UIKit.UITableViewCell.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="13" column="4" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/CoreGraphics.CGGeometry/CoreGraphics.CGGeometry.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="308" column="11" selection-start-line="308" selection-start-column="11" selection-end-line="308" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/UIKit.UITableViewHeaderFooterView/UIKit.UITableViewHeaderFooterView.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/ObjectiveC.NSObject/ObjectiveC.NSObject.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="53" column="11" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/UIKit.UITableView/UIKit.UITableView.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="301" column="11" selection-start-line="301" selection-start-column="11" selection-end-line="301" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.2/ModuleCache/9E145/4.1/arm64/iphoneos11.3/Swift/Collection.Array.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="264" column="25" selection-start-line="264" selection-start-column="25" selection-end-line="264" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ImageGallery/gallery/table/GalleryTableViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="82" column="24" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+        <state relative-caret-position="212">
+          <caret line="59" column="38" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ImageGallery/gallery/table/GalleryTableModel.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        <state relative-caret-position="457">
+          <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
         </state>
       </provider>
     </entry>

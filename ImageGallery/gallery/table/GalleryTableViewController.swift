@@ -20,16 +20,16 @@ class GalleryTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.count
+        return model.numberOfRowsInSection(section)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath)
-        cell.textLabel?.text = model.getTitle(at: indexPath.item)
+        cell.textLabel?.text = model.getTitle(at: indexPath)
         return cell
     }
 
@@ -44,18 +44,53 @@ class GalleryTableViewController: UITableViewController {
         }
     }
 
-
-/*
-// Override to support editing the table view.
-override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-        // Delete the row from the data source
-        tableView.deleteRows(at: [indexPath], with: .fade)
-    } else if editingStyle == .insert {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if (indexPath.section == 0) {
+                moveRow(indexPath: indexPath, tableView: tableView)
+            } else {
+                deleteRow(indexPath: indexPath, tableView: tableView)
+            }
+        }
     }
-}
-*/
+
+    private func deleteRow(indexPath: IndexPath, tableView: UITableView) {
+        tableView.performBatchUpdates({
+            let newRow = model.delete(at: indexPath.item)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        })
+    }
+
+    private func moveRow(indexPath: IndexPath, tableView: UITableView) {
+        tableView.performBatchUpdates({
+            let newRow = model.moveRowToDeleted(at: indexPath.item)
+            let newPath = IndexPath(row: newRow, section: 1)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.insertRows(at: [newPath], with: .fade)
+        })
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as? UITableViewHeaderFooterView
+        if (section == 0) {
+            return nil
+        }
+        if (cell == nil) {
+            cell = UITableViewHeaderFooterView(reuseIdentifier: "HeaderCell")
+        }
+        let view = UIView()
+        view.backgroundColor = view.tintColor
+        cell!.backgroundView = view
+        cell?.textLabel?.text = "Deleted"
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if (section == 0) {
+            return CGFloat(1)
+        }
+        return CGFloat(48)
+    }
 
 /*
 // Override to support rearranging the table view.

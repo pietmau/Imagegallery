@@ -24,4 +24,8 @@ class GalleryTableModel {
             self.title = title
         }
     }
+
+    func getTitle(at index: Int) -> String? {
+        return data[index].title
+    }
 }

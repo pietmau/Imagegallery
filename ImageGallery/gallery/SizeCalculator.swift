@@ -21,7 +21,6 @@ class SizeCalculator {
         return Float(image.size.height / image.size.width)
     }
 
-
     func getSize(_ imageRatio: Float, _ orientation: UIDeviceOrientation, _ bounds: CGRect?) -> CGSize {
         if (bounds == nil) {
             return CGSize(width: 0, height: 0)

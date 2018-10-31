@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 class GalleryController: UIViewController, UICollectionViewDelegateFlowLayout {
-    private let dataSource = GalleryDataSource()
+    var dataSource: GalleryDataSource? = GalleryDataSource()
     private let sizeCalculator = SizeCalculator(5, 5)
     private var dropDelegate: CollectionViewDropDelegate? = nil
     private var dragDelegate: CollectionViewDragDelegate? = nil
@@ -10,9 +10,9 @@ class GalleryController: UIViewController, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
-            dragDelegate = CollectionViewDragDelegate(dataSource)
+            dragDelegate = CollectionViewDragDelegate(dataSource!)
             collectionView.dragDelegate = dragDelegate!
-            dropDelegate = CollectionViewDropDelegate(dataSource)
+            dropDelegate = CollectionViewDropDelegate(dataSource!)
             collectionView.dropDelegate = dropDelegate!
             collectionView.dragInteractionEnabled = true
             collectionView.delegate = self
@@ -32,8 +32,8 @@ class GalleryController: UIViewController, UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let ratio: Float = dataSource.getRatio(indexPath.item)
-        let cgSize = sizeCalculator.getSize(ratio, UIDevice.current.orientation, self.view.window?.frame)
+        let ratio: Float = dataSource!.getRatio(indexPath.item)
+        let cgSize = sizeCalculator.getSize(ratio, UIDevice.current.orientation, collectionView.frame)
         return cgSize
     }
 }

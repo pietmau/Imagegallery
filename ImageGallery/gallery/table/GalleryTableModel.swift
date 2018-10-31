@@ -1,7 +1,7 @@
 import Foundation
 
 class GalleryTableModel {
-    private var data: [GalleryData] = []
+    private var data: [GalleryDataSource] = []
 
     var count: Int {
         get {
@@ -13,19 +13,17 @@ class GalleryTableModel {
         let strings = data.map { (datum) in
             datum.title
         }
-        data.append(GalleryData("Hello".madeUnique(withRespectTo: strings)))
-    }
-
-    class GalleryData {
-        private var data: [(URL, Float)] = []
-        var title: String = ""
-
-        init(_ title: String) {
-            self.title = title
-        }
+        data.append(GalleryDataSource("Hello".madeUnique(withRespectTo: strings)))
     }
 
     func getTitle(at index: Int) -> String? {
         return data[index].title
+    }
+
+    func getDataSource(at index: Int) -> GalleryDataSource {
+        if(data.count<=0){
+            addItem()
+        }
+        return data[index]
     }
 }

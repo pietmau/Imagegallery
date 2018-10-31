@@ -3,6 +3,12 @@ import UIKit
 
 class GalleryDataSource: NSObject, UICollectionViewDataSource {
     private var urls: [(URL, Float)] = []
+    let title: String
+
+    init(_ title: String) {
+        self.title = title
+        super.init()
+    }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

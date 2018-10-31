@@ -10,7 +10,13 @@ class GalleryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let viewControllers = (navigationController?.parent as? UISplitViewController)?.viewControllers
+        if (viewControllers!.count > 1) {
+            if let navController = (viewControllers![1] as? UINavigationController),
+               let gallery = navController.contents as? GalleryController {
+                gallery.dataSource = getDatasource(at: 0)
+            }
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -32,8 +38,9 @@ class GalleryTableViewController: UITableViewController {
            identifier == "MyDetailSegue",
            let cell = sender as? UITableViewCell,
            let index = tableView.indexPath(for: cell),
-           let galleryController = segue.destination as? GalleryController {
-            //galleryController.dataSource = GalleryDataSource()
+           let navigationController = segue.destination as? UINavigationController,
+           let galleryController = navigationController.contents as? GalleryController {
+            galleryController.dataSource = getDatasource(at: index.item)
         }
     }
 
@@ -75,4 +82,8 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 }
 */
 
+    private func getDatasource(at index: Int) -> GalleryDataSource {
+        return model.getDataSource(at: index)
+    }
 }
+

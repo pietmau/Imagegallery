@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 class GalleryController: UIViewController, UICollectionViewDelegateFlowLayout {
-    var dataSource: GalleryDataSource? = GalleryDataSource()
     private let sizeCalculator = SizeCalculator(5, 5)
     private var dropDelegate: CollectionViewDropDelegate? = nil
     private var dragDelegate: CollectionViewDragDelegate? = nil
@@ -10,18 +9,41 @@ class GalleryController: UIViewController, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
-            dragDelegate = CollectionViewDragDelegate(dataSource!)
-            collectionView.dragDelegate = dragDelegate!
-            dropDelegate = CollectionViewDropDelegate(dataSource!)
-            collectionView.dropDelegate = dropDelegate!
-            collectionView.dragInteractionEnabled = true
-            collectionView.delegate = self
-            collectionView.dataSource = dataSource
-            let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-            layout.minimumLineSpacing = 0
-            layout.minimumInteritemSpacing = 0
-            recognizer = UIPinchGestureRecognizer(target: self, action: #selector(onPinch(recognizer:)))
-            collectionView.addGestureRecognizer(recognizer!)
+            if (dataSource != nil) {
+                dragDelegate = CollectionViewDragDelegate(dataSource!)
+                collectionView.dragDelegate = dragDelegate!
+                dropDelegate = CollectionViewDropDelegate(dataSource!)
+                collectionView.dropDelegate = dropDelegate!
+                collectionView.dragInteractionEnabled = true
+                collectionView.delegate = self
+                collectionView.dataSource = dataSource
+                let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                layout.minimumLineSpacing = 0
+                layout.minimumInteritemSpacing = 0
+                recognizer = UIPinchGestureRecognizer(target: self, action: #selector(onPinch(recognizer:)))
+                collectionView.addGestureRecognizer(recognizer!)
+                collectionView.reloadData()
+            }
+        }
+    }
+
+    var dataSource: GalleryDataSource? = nil {
+        didSet {
+            if (collectionView != nil) {
+                dragDelegate = CollectionViewDragDelegate(dataSource!)
+                collectionView.dragDelegate = dragDelegate!
+                dropDelegate = CollectionViewDropDelegate(dataSource!)
+                collectionView.dropDelegate = dropDelegate!
+                collectionView.dragInteractionEnabled = true
+                collectionView.delegate = self
+                collectionView.dataSource = dataSource
+                let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+                layout.minimumLineSpacing = 0
+                layout.minimumInteritemSpacing = 0
+                recognizer = UIPinchGestureRecognizer(target: self, action: #selector(onPinch(recognizer:)))
+                collectionView.addGestureRecognizer(recognizer!)
+                collectionView.reloadData()
+            }
         }
     }
 

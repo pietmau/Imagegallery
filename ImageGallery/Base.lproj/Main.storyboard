@@ -36,7 +36,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="vdS-f5-ouW" kind="showDetail" id="f4k-KF-LCG"/>
+                                    <segue destination="vdS-f5-ouW" kind="showDetail" identifier="MyDetailSegue" id="f4k-KF-LCG"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

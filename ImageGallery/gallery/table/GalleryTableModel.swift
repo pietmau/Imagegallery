@@ -2,60 +2,63 @@ import Foundation
 
 class GalleryTableModel {
     let numberOfSections = 2
-    private var data: [GalleryDataSource] = []
-    private var deleted: [GalleryDataSource] = []
+    private var data: [[GalleryDataSource]] = []
 
     func addItem() {
-        var titles = data.titles
-        titles.append(contentsOf: deleted.titles)
-        data.append(GalleryDataSource("Hello".madeUnique(withRespectTo: titles)))
+        data[0].append(GalleryDataSource("Hello".madeUnique(withRespectTo: data.titles)))
     }
 
     func getTitle(at index: IndexPath) -> String? {
-        if (index.section == 0) {
-            return data[index.row].title
-        } else {
-            return deleted[index.row].title
-        }
+        return getDataSource(at: index).title
     }
 
     func getDataSource(at index: IndexPath) -> GalleryDataSource {
-        if (index.section == 0) {
-            return data[index.row]
-        } else {
-            return deleted[index.row]
-        }
+        return data[index.section][index.row]
     }
 
     func createFirstDataSource() {
-        data.append(GalleryDataSource("Empty"))
+        data.append([])
+        data.append([])
+        data[0].append(GalleryDataSource("Empty"))
     }
 
-    func moveRowToDeleted(at: Int) -> Int {
-        let row = data.remove(at: at)
-        let size = deleted.count
-        deleted.append(row)
-        return size
+    func move(from: IndexPath, toSection: Int) -> IndexPath {
+        let row = remove(from: from)
+        return append(toSection: toSection, row: row)
     }
+
+    func remove(from: IndexPath) -> GalleryDataSource {
+        return data[from.section].remove(at: from.row)
+    }
+
+    func append(toSection: Int, row: GalleryDataSource) -> IndexPath {
+        let rowsCount = data[toSection].count
+        data[toSection].append(row)
+        return IndexPath(row: rowsCount, section: toSection)
+    }
+
 
     func numberOfRowsInSection(_ section: Int) -> Int {
-        switch section {
-        case 1: return deleted.count
-        default: return data.count
+        if (data.count > section) {
+            return data[section].count
+        } else {
+            return 0
         }
     }
 
-    func delete(at index: Int) {
-        deleted.remove(at: index)
+    func delete(at index: IndexPath) {
+        data[index.section].remove(at: index.row)
     }
 }
 
 
-extension Array where Element == GalleryDataSource {
+extension Array where Element == Array<GalleryDataSource> {
 
     var titles: Array<String> {
         get {
-            return self.map { (datum) in
+            return self.flatMap { list in
+                list
+            }.map { datum in
                 datum.title
             }
         }

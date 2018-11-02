@@ -49,7 +49,7 @@ class GalleryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             if (indexPath.section == 0) {
-                moveRow(indexPath: indexPath, tableView: tableView)
+                moveRow(from: indexPath, toSection: 1, tableView: tableView)
             } else if (indexPath.section == 1) {
                 deleteRow(indexPath: indexPath, tableView: tableView)
             }
@@ -63,7 +63,9 @@ class GalleryTableViewController: UITableViewController {
 
     private func createActions(_ index: IndexPath) -> [UIContextualAction] {
         if (index.section == 1) {
-            var action = UIContextualAction(style: .normal, title: "Undelete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+            var action = UIContextualAction(style: .destructive, title: "Undelete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+                self.undelete(at: index)
+                completionHandler(true)
             }
             action.backgroundColor = UIColor.green
             let actions: [UIContextualAction] = [action]
@@ -95,48 +97,26 @@ class GalleryTableViewController: UITableViewController {
         return CGFloat(48)
     }
 
-/*
-// Override to support rearranging the table view.
-override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-    // Return false if you do not want the item to be re-orderable.
-    return true
-}
-*/
-
-/*
-// MARK: - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-}
-*/
     private func deleteRow(indexPath: IndexPath, tableView: UITableView) {
         tableView.performBatchUpdates({
-            let newRow = model.delete(at: indexPath.item)
+            model.delete(at: indexPath)
             tableView.deleteRows(at: [indexPath], with: .fade)
         })
     }
 
-    private func moveRow(indexPath: IndexPath, tableView: UITableView) {
-        tableView.performBatchUpdates({
-            let newRow = model.moveRowToDeleted(at: indexPath.item)
-            let newPath = IndexPath(row: newRow, section: 1)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.insertRows(at: [newPath], with: .fade)
-        })
+    private func moveRow(from: IndexPath, toSection: Int, tableView: UITableView) {
+        let row = model.remove(from: from)
+        tableView.deleteRows(at: [from], with: .fade)
+        let path = model.append(toSection: toSection, row: row)
+        tableView.insertRows(at: [path], with: .fade)
     }
 
     private func getDatasource(at index: IndexPath) -> GalleryDataSource {
         return model.getDataSource(at: index)
+    }
+
+    private func undelete(at: IndexPath) {
+        moveRow(from: at, toSection: 0, tableView: tableView)
     }
 }
 

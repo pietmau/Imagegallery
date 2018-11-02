@@ -1,14 +1,9 @@
 import Foundation
 
 class GalleryTableModel {
+    let numberOfSections = 2
     private var data: [GalleryDataSource] = []
     private var deleted: [GalleryDataSource] = []
-
-    var count: Int {
-        get {
-            return data.count
-        }
-    }
 
     func addItem() {
         var titles = data.titles
@@ -24,11 +19,16 @@ class GalleryTableModel {
         }
     }
 
-    func getDataSource(at index: Int) -> GalleryDataSource {
-        if (data.count <= 0) {
-            addItem()
+    func getDataSource(at index: IndexPath) -> GalleryDataSource {
+        if (index.section == 0) {
+            return data[index.row]
+        } else {
+            return deleted[index.row]
         }
-        return data[index]
+    }
+
+    func createFirstDataSource() {
+        data.append(GalleryDataSource("Empty"))
     }
 
     func moveRowToDeleted(at: Int) -> Int {

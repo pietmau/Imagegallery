@@ -14,13 +14,15 @@ class GalleryTableViewController: UITableViewController {
         if (viewControllers!.count > 1) {
             if let navController = (viewControllers![1] as? UINavigationController),
                let gallery = navController.contents as? GalleryController {
-                gallery.dataSource = getDatasource(at: 0)
+                let path = IndexPath(row: 0, section: 0)
+                model.createFirstDataSource()
+                gallery.dataSource = getDatasource(at: path)
             }
         }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return model.numberOfSections
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,34 +42,35 @@ class GalleryTableViewController: UITableViewController {
            let index = tableView.indexPath(for: cell),
            let navigationController = segue.destination as? UINavigationController,
            let galleryController = navigationController.contents as? GalleryController {
-            galleryController.dataSource = getDatasource(at: index.item)
+            galleryController.dataSource = getDatasource(at: index)
         }
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+        if (editingStyle == .delete) {
             if (indexPath.section == 0) {
                 moveRow(indexPath: indexPath, tableView: tableView)
-            } else {
+            } else if (indexPath.section == 1) {
                 deleteRow(indexPath: indexPath, tableView: tableView)
             }
         }
     }
 
-    private func deleteRow(indexPath: IndexPath, tableView: UITableView) {
-        tableView.performBatchUpdates({
-            let newRow = model.delete(at: indexPath.item)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        })
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let actions = createActions(indexPath)
+        return UISwipeActionsConfiguration(actions: actions)
     }
 
-    private func moveRow(indexPath: IndexPath, tableView: UITableView) {
-        tableView.performBatchUpdates({
-            let newRow = model.moveRowToDeleted(at: indexPath.item)
-            let newPath = IndexPath(row: newRow, section: 1)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.insertRows(at: [newPath], with: .fade)
-        })
+    private func createActions(_ index: IndexPath) -> [UIContextualAction] {
+        if (index.section == 1) {
+            var action = UIContextualAction(style: .normal, title: "Undelete") { (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+            }
+            action.backgroundColor = UIColor.green
+            let actions: [UIContextualAction] = [action]
+            return actions
+        } else {
+            return []
+        }
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -116,8 +119,23 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     // Pass the selected object to the new view controller.
 }
 */
+    private func deleteRow(indexPath: IndexPath, tableView: UITableView) {
+        tableView.performBatchUpdates({
+            let newRow = model.delete(at: indexPath.item)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        })
+    }
 
-    private func getDatasource(at index: Int) -> GalleryDataSource {
+    private func moveRow(indexPath: IndexPath, tableView: UITableView) {
+        tableView.performBatchUpdates({
+            let newRow = model.moveRowToDeleted(at: indexPath.item)
+            let newPath = IndexPath(row: newRow, section: 1)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.insertRows(at: [newPath], with: .fade)
+        })
+    }
+
+    private func getDatasource(at index: IndexPath) -> GalleryDataSource {
         return model.getDataSource(at: index)
     }
 }

@@ -50,7 +50,7 @@ class GalleryController: UIViewController, UICollectionViewDelegateFlowLayout {
     @objc
     private func onPinch(recognizer: UIPinchGestureRecognizer) {
         sizeCalculator.onPinch(recognizer)
-        collectionView.reloadData()
+        (collectionView?.collectionViewLayout as? UICollectionViewFlowLayout)?.invalidateLayout()
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

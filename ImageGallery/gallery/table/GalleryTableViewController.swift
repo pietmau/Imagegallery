@@ -8,19 +8,6 @@ class GalleryTableViewController: UITableViewController {
         tableView.reloadData()
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let viewControllers = (navigationController?.parent as? UISplitViewController)?.viewControllers
-        if (viewControllers!.count > 1) {
-            if let navController = (viewControllers![1] as? UINavigationController),
-               let gallery = navController.contents as? GalleryController {
-                let path = IndexPath(row: 0, section: 0)
-                model.createFirstDataSource()
-                gallery.dataSource = getDatasource(at: path)
-            }
-        }
-    }
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return model.numberOfSections
     }

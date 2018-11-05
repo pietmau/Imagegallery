@@ -2,7 +2,7 @@ import Foundation
 
 class GalleryTableModel {
     let numberOfSections = 2
-    private var data: [[GalleryDataSource]] = []
+    var data: [[GalleryDataSource]] = [[], []]
 
     func addItem() {
         data[0].append(GalleryDataSource("Hello".madeUnique(withRespectTo: data.titles)))
